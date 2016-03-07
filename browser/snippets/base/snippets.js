@@ -29,3 +29,22 @@ typeof NaN,  // "number"
 typeof [],  // "object"
 typeof new String('lalala'),  // "object"
 ];
+
+
+_.isBoolean(foo);
+
+
+function hello (name, options) {
+  if (_.isObject(name)) {
+    options = name;
+    name = undefined;
+  }
+  name = name || 'John';
+  options = options || {};
+  options.color = options.color || 'blue';
+  options.lang = options.lang || 'fr';
+
+  console.log(name, options);
+}
+
+
