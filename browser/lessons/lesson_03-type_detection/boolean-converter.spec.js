@@ -1,7 +1,6 @@
-import convertToBoolean from './boolean-converter';
-
-
 import _ from 'lodash';
+
+import convertToBoolean from './boolean-converter';
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 // http://stackoverflow.com/questions/263965/how-can-i-convert-a-string-to-boolean-in-javascript
@@ -39,6 +38,7 @@ context('[Lesson 3]', function () {
     it('should be able to do a correct conversion to boolean (round 2)', function () {
       const TEST_CASES = [
         {
+          /* eslint-disable no-undefined */
           input: undefined,
           expected: false
         },

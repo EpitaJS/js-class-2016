@@ -13,6 +13,7 @@ const LS_KEY__MASTERING_RESOURCES_PANEL =
 // window.localStorage.removeItem(<{string} key>);
 
 context('[Lesson 2]', function () {
+  /* eslint-disable no-console */
 
   describe('A good javascript developer mastering Chrome Dev Tools', function () {
 

@@ -53,7 +53,7 @@ if (window.__karma__) {
   Promise.all(specs.map(path => System.import('browser/lessons/' + path)))
   .then(() => {
     console.log('* All tests loaded, lets go !');
-    window.__delayed_karma_start();
+    window.__delayedKarmaStart();
   });
 }
 else {

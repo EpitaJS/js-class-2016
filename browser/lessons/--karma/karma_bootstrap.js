@@ -15,26 +15,30 @@
 (function() {
   'use strict';
 
-  console.log('* loading lessons tests in karma...');
+  function debug() {
+    /* eslint-disable no-console */
+    console.log.apply(console, arguments);
+  }
+  debug('* loading lessons tests in karma...');
 
   // intercept karma start in order to wait for our asynchronously loaded tests to be ready
-  var original_karma_start = window.__karma__.start;
+  var originalKarmaStart = window.__karma__.start;
   window.__karma__.start = function() {
-    console.log('* original __karma__.start intercepted !', arguments);
+    debug('* original __karma__.start intercepted !', arguments);
     var savedArgs = arguments;
 
     // restore XXX restoring breaks things ?!?
     //window.__karma__.start = original_karma_start;
 
     // expose a way to call it later with the same params
-    window.__delayed_karma_start = function () {
-      console.log('* calling original __karma__.start with :', savedArgs);
-      return original_karma_start.apply(window.__karma__, savedArgs)
+    window.__delayedKarmaStart = function () {
+      debug('* calling original __karma__.start with :', savedArgs);
+      return originalKarmaStart.apply(window.__karma__, savedArgs)
     };
   };
 
-  function load_script(src) {
-    console.log('* loading script "' + src + '"...');
+  function loadScript(src) {
+    debug('* loading script "' + src + '"...');
     var se = document.createElement('script');
     se.src = src;
 
@@ -48,19 +52,19 @@
   }
 
   var POLLING_INTERVAL_MS = 100;
-  function wait_for(testFn, cb) {
-    var wait_count = 0;
+  function pollFor(testFn, cb) {
+    var pollCount = 0;
 
     function check() {
-      wait_count++;
-      //console.log('  Waiting...', wait_count);
-      var is_ready = testFn();
-      if (is_ready) {
-        console.log('* Wait succeeded !');
+      pollCount++;
+      //debug('  Waiting...', wait_count);
+      var isReady = testFn();
+      if (isReady) {
+        debug('* Wait succeeded !');
         cb();
       }
-      else if (wait_count > 10) {
-        console.log('* Wait timed out, attempting to go forward anyway...');
+      else if (pollCount > 10) {
+        debug('* Wait timed out, attempting to go forward anyway...');
         cb();
       }
       else
@@ -80,22 +84,22 @@
   };
 
   // start loading additional scripts, enforcing order with waits
-  load_script('base/jspm_packages/system-polyfills.js');
-  load_script('base/config.js');
-  wait_for(function() {
+  loadScript('base/jspm_packages/system-polyfills.js');
+  loadScript('base/config.js');
+  pollFor(function() {
     return !!systemJSConfig;
   }, function () {
-    console.log('* systemJS config intercepted !');
+    debug('* systemJS config intercepted !');
 
     // change the config
     systemJSConfig.baseURL = 'base';
 
-    load_script('base/jspm_packages/system.js');
+    loadScript('base/jspm_packages/system.js');
 
-    wait_for(function() {
+    pollFor(function() {
       return !!window.System;
     }, function () {
-      console.log('* systemJS loaded !');
+      debug('* systemJS loaded !');
       window.System.config(systemJSConfig);
 
       // expose jspm AMD loading
@@ -105,7 +109,7 @@
       // start common test bootstrapping
       System.import('browser/lessons/lesson_tests_bootstrap.js')
       .then(function() {
-        console.log('* test bootstrap loaded ! nearly ready...');
+        debug('* test bootstrap loaded ! nearly ready...');
       });
     });
   });

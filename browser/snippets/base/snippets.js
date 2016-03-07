@@ -1,3 +1,5 @@
+'use strict';
+
 import _ from 'lodash';
 
 'ABCD'.toLowerCase();
@@ -46,5 +48,4 @@ function hello (name, options) {
 
   console.log(name, options);
 }
-
 

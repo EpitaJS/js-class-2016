@@ -1,4 +1,3 @@
-
 /** Cast a value to its boolean representation.
  *
  * @argument value - value to properly cast to a boolean

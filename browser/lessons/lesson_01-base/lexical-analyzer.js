@@ -1,4 +1,4 @@
-/** A simple lexical anlyzer
+/** A simple lexical analyzer
  */
 
 /** tokenize a string = split it into words

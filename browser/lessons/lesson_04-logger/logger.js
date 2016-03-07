@@ -1,11 +1,5 @@
 
-const defaultLogger = createBetterLogger();
-defaultLogger.create = createBetterLogger;
-
-export default defaultLogger;
-
-
-function createBetterLogger() {
+function createFancyLogger() {
 
   function logBetter(level) {
     // TODO implement !
@@ -13,7 +7,7 @@ function createBetterLogger() {
     console[level].apply(console, arguments);
   }
 
-
+  /* eslint-disable no-undefined */
   return {
     log: logBetter.bind(undefined, 'log'),
     info: logBetter.bind(undefined, 'info'),
@@ -24,12 +18,12 @@ function createBetterLogger() {
 
 
 
-
 /** Convert a Javascript date to yyy/mm/dd hh:mm:ss.ms
  *
  * @param {Date} d
  */
 function getTimestamp(d) {
+  /* eslint complexity: [2,9] */
   d = d || (new Date());
 
   let yyyy = d.getFullYear();
@@ -53,3 +47,11 @@ function getTimestamp(d) {
   return `${yyyy}/${mm}/${dd} ${hh}:${mm}:${ss}.${mss}`;
 }
 
+
+/////////////////////////////////////////////////////////
+
+const defaultLogger = createFancyLogger();
+defaultLogger.create = createFancyLogger;
+
+export default defaultLogger;
+export { createFancyLogger as create };
