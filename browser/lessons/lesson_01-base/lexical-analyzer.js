@@ -42,7 +42,7 @@ export function index(str) {
   var dict = {};
 
   for (var i = 0; i < tokens.length; ++i) {
-    if (typeof dict[tokens[i]] == 'undefined')
+    if (typeof dict[tokens[i]] === 'undefined')
       dict[tokens[i]] = 1;
     else
       dict[tokens[i]]++;
