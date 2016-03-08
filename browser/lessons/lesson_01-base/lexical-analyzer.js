@@ -53,6 +53,14 @@ export function parse(str) {
 */
 export function index(str) {
     // Write code here so that it passes the tests
+    var h = {}
+    var tab = tokenize(str);
+    var i = 0;
+    while (i < tab.length) {
+        h[stem(tab[i])] = (h[stem(tab[i])] == null) ? 1 : h[stem(tab[i])] + 1;
+        i += 1;
+    }
+    return h
 }
 
 
