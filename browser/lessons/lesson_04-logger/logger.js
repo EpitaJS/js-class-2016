@@ -1,22 +1,42 @@
 import _ from 'lodash';
 
 function createFancyLogger(id) {
-  id = (id || 'default').toUpperCase();
-
-  function logBetter(level) {
-    const originalArgs = Array.from(arguments);
-
-    // TODO implement !
-    let newArgs = originalArgs;
-    // TODO....
+  if (id) {
+    id = id.toUpperCase();
+  }
+  else {
+    id = "default";
   }
 
   /* eslint-disable no-undefined */
   return {
-    log: undefined,
-    info: undefined,
-    warn: undefined,
-    error: undefined,
+    log: function(arg)
+    {
+      const originalArgs = Array.from(arguments);
+
+      let newArgs = originalArgs;
+      newArgs[0] = getTimestamp() + " - " + id + " - ";
+      if (typeof arg === 'object') {
+        newArgs.push(arg);
+      }
+      else {
+        newArgs[0] += arg;
+      }
+
+      console.log.apply(console, newArgs);
+    },
+    info: function(arg)
+    {
+      console.info(getTimestamp() + " - " + id + " - " + arg);
+    },
+    warn: function(arg)
+    {
+      console.warn(getTimestamp() + " - " + id + " - " + arg);
+    },
+    error: function(arg)
+    {
+      console.error(getTimestamp() + " - " + id + " - " + arg);
+    }
   };
 }
 
