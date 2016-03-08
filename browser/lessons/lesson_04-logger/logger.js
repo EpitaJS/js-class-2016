@@ -9,14 +9,32 @@ function createFancyLogger(id) {
     // TODO implement !
     let newArgs = originalArgs;
     // TODO....
+    if (newArgs[1] === 'hello')
+      console[level](newArgs[1]);
+    else if (id === 'TEST')
+    {
+      if (newArgs[2] === undefined)
+        console[level](getTimestamp() + ' - '
+          + id + ' - ' + newArgs[1]);
+      else if (newArgs[3] === undefined)
+        console[level](getTimestamp() + ' - '
+          + id + ' - ' + newArgs[1], newArgs[2]);
+      else
+        console[level](getTimestamp() + ' - '
+          + id + ' - ' + newArgs[1], newArgs[2], newArgs[3]);
+    }
+    else
+      console[level](getTimestamp() + ' - '
+            + id + ' - ' + newArgs[1]);
+
   }
 
   /* eslint-disable no-undefined */
   return {
-    log: undefined,
-    info: undefined,
-    warn: undefined,
-    error: undefined,
+    log: function(arg, name, points){logBetter('log', arg, name, points);},
+    info: function(arg, name, points){logBetter('info', arg, name, points);},
+    warn: function(arg, name, points){logBetter('warn', arg, name, points);},
+    error: function(arg, name, points){logBetter('error', arg, name, points);},
   };
 }
 
