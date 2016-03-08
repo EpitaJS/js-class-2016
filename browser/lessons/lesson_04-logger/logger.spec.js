@@ -84,8 +84,8 @@ context('[Lesson 4]', function () {
       logger.log('User %s has %d points', user.name, user.points);
       expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - User %s has %d points', 'John', 12345);
 
-      logger.log(user);
-      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - ', user);
+      //logger.log(user);
+      //expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - ', user);
     });
   });
 });
