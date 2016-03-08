@@ -9,7 +9,7 @@
  * @return {Array}
  */
 export function tokenize(str) {
-  // Write code here so that it passes the tests
+  return str.trim().split(' ').filter(e => e != '');
 }
 
 /** stem a string = turn several variants into the same
@@ -19,7 +19,7 @@ export function tokenize(str) {
  * @return {String}
  */
 export function stem(str) {
-  // Write code here so that it passes the tests
+  return str.toLowerCase();
 }
 
 /** parse a string into a list of stemmed token
@@ -29,7 +29,7 @@ export function stem(str) {
  * @return {Array}
  */
 export function parse(str) {
-  // Write code here so that it passes the tests
+  return tokenize(str).map(stem);
 }
 
 /** index a string into a hash {'token' : <frequency of appearance>}
@@ -38,34 +38,15 @@ export function parse(str) {
  * @return {Object}
  */
 export function index(str) {
-  // Write code here so that it passes the tests
+  var tokens = parse(str);
+  var dict = {};
+
+  for (var i = 0; i < tokens.length; ++i) {
+    if (typeof dict[tokens[i]] == 'undefined')
+      dict[tokens[i]] = 1;
+    else
+      dict[tokens[i]]++;
+  }
+
+  return dict;
 }
-
-
-/* Hints :
- *
- ******* Array *******
-
- Array.push(<new item>)
-
- array.forEach(value => {
-   ...
- });
-
- Array.map(value => {
-   return <newValue>;
- });
-
- Array.reduce((accumulator, value) => {
-   accumulator += value;
-   return accumulator;
- }, 0);
-
- ******* String *******
-
- String.split(<separator>) -> Array
-
- String.toLowerCase()
-
- *
- */
