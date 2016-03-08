@@ -67,7 +67,7 @@ context('[Lesson 3]', function () {
     });
 
     // Too hard ;-) but bonus points if you do it
-    it.skip('should be able to do a correct conversion to boolean (round 4)', function () {
+    it('should be able to do a correct conversion to boolean (round 4)', function () {
       const TEST_CASES = [
         {
           input: 0,
