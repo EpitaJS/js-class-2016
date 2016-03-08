@@ -10,6 +10,9 @@
  */
 export function tokenize(str) {
   // Write code here so that it passes the tests
+  let str2 = str.replace(/^\s+|\s$/gm,'');
+  str2 = str2.replace(/\s+/g, ' ');
+  return str2.split(' ');
 }
 
 /** stem a string = turn several variants into the same
@@ -20,6 +23,7 @@ export function tokenize(str) {
  */
 export function stem(str) {
   // Write code here so that it passes the tests
+  return str.toLowerCase();
 }
 
 /** parse a string into a list of stemmed token
@@ -30,6 +34,7 @@ export function stem(str) {
  */
 export function parse(str) {
   // Write code here so that it passes the tests
+  return tokenize(stem(str));
 }
 
 /** index a string into a hash {'token' : <frequency of appearance>}
@@ -38,7 +43,16 @@ export function parse(str) {
  * @return {Object}
  */
 export function index(str) {
-  // Write code here so that it passes the tests
+  // Write code here so that it passes the test
+  let array = parse(str);
+
+  let frequency = {}
+  for(let i = 0; i < array.length; i++) {
+      let num = array[i];
+      frequency[num] = frequency[num] ? frequency[num] + 1 : 1;
+  }
+
+  return frequency;
 }
 
 
