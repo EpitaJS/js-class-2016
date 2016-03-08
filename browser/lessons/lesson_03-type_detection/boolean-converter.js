@@ -5,6 +5,8 @@
  */
 export default function convertToBoolean(value) {
   // TODO write the function so it passes the tests below !
+    if (value)
+        return value;
 }
 
 
