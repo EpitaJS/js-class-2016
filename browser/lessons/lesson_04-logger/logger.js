@@ -3,21 +3,12 @@ import _ from 'lodash';
 function createFancyLogger(id) {
   id = (id || 'default').toUpperCase();
 
-  function logBetter(level) {
-    const originalArgs = Array.from(arguments);
-
-    // TODO implement !
-    let newArgs = originalArgs;
-    // TODO....
-  }
-
-  /* eslint-disable no-undefined */
-  return {
-    log: undefined,
-    info: undefined,
-    warn: undefined,
-    error: undefined,
-  };
+  return ['log', 'info', 'warn', 'error'].reduce((obj, value) => {
+    obj[value] = (args) => {
+      console[value].apply(console, [getTimestamp(null), '-', id, '-'].concat(args));
+    };
+    return obj;
+  }, {});
 }
 
 
