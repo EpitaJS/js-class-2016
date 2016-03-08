@@ -41,6 +41,9 @@ export function stem(str) {
 */
 export function parse(str) {
     // Write code here so that it passes the tests
+    return tokenize(str).map(
+        t => stem(t)
+    );
 }
 
 /** index a string into a hash {'token' : <frequency of appearance>}
