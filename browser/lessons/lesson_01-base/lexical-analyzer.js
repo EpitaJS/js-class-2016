@@ -42,8 +42,8 @@ export function parse(str) {
  */
 export function index(str) {
   // Write code here so that it passes the tests
-  var result = {}
-  var array = parse(str);
+  let result = {}
+  let array = parse(str);
   array.forEach(value => {
     result[value] = 0;
   });
