@@ -4,7 +4,12 @@
  * @return {Boolean}
  */
 export default function convertToBoolean(value) {
-  // TODO write the function so it passes the tests below !
+    var valueType = typeof value;
+    if (valueType === "string")
+        return (value === "true");
+    if (valueType === "undefined" || valueType === "object")
+        return false;
+    return Boolean(value);
 }
 
 
