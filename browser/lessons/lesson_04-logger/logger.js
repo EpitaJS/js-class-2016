@@ -1,18 +1,22 @@
+import _ from 'lodash';
 
-function createFancyLogger() {
+function createFancyLogger(id) {
+  id = (id || 'default').toUpperCase();
 
   function logBetter(level) {
-    // TODO implement !
+    const originalArgs = Array.from(arguments);
 
-    console[level].apply(console, arguments);
+    // TODO implement !
+    let newArgs = originalArgs;
+    // TODO....
   }
 
   /* eslint-disable no-undefined */
   return {
-    log: logBetter.bind(undefined, 'log'),
-    info: logBetter.bind(undefined, 'info'),
-    warn: logBetter.bind(undefined, 'warn'),
-    error: logBetter.bind(undefined, 'error'),
+    log: undefined,
+    info: undefined,
+    warn: undefined,
+    error: undefined,
   };
 }
 

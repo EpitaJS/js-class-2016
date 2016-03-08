@@ -19,14 +19,14 @@ context('[Lesson 4]', function () {
       sinon.spy(console, 'error');
     });
     afterEach(function () {
-      console.error.restore;
-      console.warn.restore;
-      console.info.restore;
-      console.log.restore;
+      console.log.restore();
+      console.warn.restore();
+      console.info.restore();
+      console.error.restore();
     });
 
     it('should forward to proper functions', function () {
-      const logger = FancyLogger.create('TEST');
+      const logger = FancyLogger;
 
       logger.log('hello');
       expect(console.log).to.have.been.calledOnce;
@@ -45,20 +45,36 @@ context('[Lesson 4]', function () {
       const logger = FancyLogger.create('TEST');
 
       logger.log('log');
-      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - 😊 - log');
+      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - log');
 
       logger.info('info');
-      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - 😔 - info');
+      expect(console.info).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - info');
 
-      logger.warn('warn');
-      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - 😫 - warn');
+      logger.warn('warning !');
+      expect(console.warn).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - warning !');
 
       logger.error('error !');
-      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - 😱 - error !');
+      expect(console.error).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - error !');
+    });
+
+    it('should expose a default logger with a default id', function () {
+      const logger = FancyLogger;
+
+      logger.log('log');
+      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - default - log');
+
+      logger.info('info');
+      expect(console.info).to.have.been.calledWith('1970/01/01 00:01:00.000 - default - info');
+
+      logger.warn('warning !');
+      expect(console.warn).to.have.been.calledWith('1970/01/01 00:01:00.000 - default - warning !');
+
+      logger.error('error !');
+      expect(console.error).to.have.been.calledWith('1970/01/01 00:01:00.000 - default - error !');
     });
 
     it('should handle both log invocation form', function () {
-      const logger = FancyLogger.create();
+      const logger = FancyLogger.create('TEST');
 
       let user = {
         name: 'John',
@@ -66,10 +82,10 @@ context('[Lesson 4]', function () {
       };
 
       logger.log('User %s has %d points', user.name, user.points);
-      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - 😊 - User John has 12345 points');
+      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - User %s has %d points', 'John', 12345);
 
       logger.log(user);
-      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - 😊 - hello');
+      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - ', user);
     });
   });
 });

@@ -1,6 +1,6 @@
-# js-class-2016-proto
+# js-class-2016
 
-[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 [![Build Status](https://travis-ci.org/EpitaJS/js-class-2016.svg?branch=master)](https://travis-ci.org/EpitaJS/js-class-2016)
 
 ## Introduction
@@ -29,9 +29,9 @@ npm start
 
 
 ## TODO
-* [ ] REWORK TESTS
-* [ ] set Travis integration
-  * [ ] browser with karma + phantom + jspm
+* [x] REWORK TESTS
+* [x] set Travis integration
+  * [x] browser with karma + phantom + jspm
   * [ ] node
 * [ ] Build an app skeleton for project
 
@@ -54,18 +54,8 @@ npm start
 * https://nodejs.org/en/docs/es6/
 * https://github.com/DrkSephy/es6-cheatsheet
 
-## Ideas
-* n params : add numbers and callback function
-* auto-convert links-like to proper links in a page
-
 HTML APIs
+* https://dev.windows.com/en-us/microsoft-edge/platform/status/?filter=f2f0000bf
 * https://developers.google.com/web/updates/
 * http://html5index.org/
 * http://www.w3schools.com/html/html5_geolocation.asp
-
-free REST APis
-* https://www.npmjs.com/package/hack-news
-* http://developer.marvel.com/
-* http://openweathermap.org/appid#get
-* https://github.com/zzarcon/nodegram
-*

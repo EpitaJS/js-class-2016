@@ -49,3 +49,15 @@ function hello (name, options) {
   console.log(name, options);
 }
 
+
+
+function find(filter, cb) {
+  let result;
+
+  // look in db.... (async)
+
+  if (result) return cb(null, result);
+
+  return cb(new Error('Not found !'));
+}
+

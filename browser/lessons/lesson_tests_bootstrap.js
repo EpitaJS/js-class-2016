@@ -33,6 +33,8 @@ const specs = [
   'lesson_02-chrome-dev-tools/spec',
   'lesson_03-type_detection/boolean-converter.spec',
   'lesson_04-logger/logger.spec',
+  'lesson_05-timeouts/debounce.spec',
+  'lesson_07-async-callback/find-agency.spec',
 
   /*
    './types/index.js',
