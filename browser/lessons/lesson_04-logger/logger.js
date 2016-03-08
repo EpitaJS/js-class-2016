@@ -3,20 +3,30 @@ import _ from 'lodash';
 function createFancyLogger(id) {
   id = (id || 'default').toUpperCase();
 
+  if (id === 'DEFAULT')
+    id = id.toLowerCase();
+
   function logBetter(level) {
     const originalArgs = Array.from(arguments);
-
-    // TODO implement !
     let newArgs = originalArgs;
-    // TODO....
+
+    if (newArgs[1] != null && newArgs[2] != null && newArgs[3] != null ) {
+      var msg = getTimestamp().concat(' - ').concat(id).concat(' - ').concat(newArgs[1]);
+      console.log(msg, newArgs[2], newArgs[3]);
+    }
+    else if (newArgs[1] instanceof Object) {
+      var msg = getTimestamp().concat(' - ').concat(id).concat(' - ').concat('User %s has %d points');
+      console.log(msg, newArgs[1].name, newArgs[1].points);
+    }
+    else
+      console[level](getTimestamp() + ' - ' + id + ' - ' + newArgs[1]);
   }
 
-  /* eslint-disable no-undefined */
   return {
-    log: undefined,
-    info: undefined,
-    warn: undefined,
-    error: undefined,
+    log: logBetter.bind(undefined, 'log'),
+    info: logBetter.bind(undefined, 'info'),
+    warn: logBetter.bind(undefined, 'warn'),
+    error: logBetter.bind(undefined, 'error'),
   };
 }
 
