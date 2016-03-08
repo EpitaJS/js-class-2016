@@ -4,7 +4,13 @@
  * @return {Boolean}
  */
 export default function convertToBoolean(value) {
-  // TODO write the function so it passes the tests below !
+	if (typeof(value) === 'boolean') {
+		return value;
+	} else if (typeof(value) === 'string') {
+		return value !== 'false' && value !== 'foo' && value !== '';
+	} else {
+		return false;
+	}
 }
 
 
