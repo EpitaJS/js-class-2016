@@ -6,21 +6,24 @@ function createFancyLogger(id) {
   function logBetter(level) {
     const originalArgs = Array.from(arguments);
 
-    // TODO implement !
-    let newArgs = originalArgs;
-    // TODO....
+    if (id === 'DEFAULT') id = id.toLowerCase();
+
+    originalArgs.shift();
+
+    if (typeof originalArgs[0] === 'string')
+      console[level].apply(console, [([getTimestamp(null), id, originalArgs.shift()]).join(" - ")].concat(originalArgs));
+    else
+      console[level].apply(console, [[getTimestamp(null), id, ""].join(" - ")].concat(originalArgs));
   }
 
   /* eslint-disable no-undefined */
   return {
-    log: undefined,
-    info: undefined,
-    warn: undefined,
-    error: undefined,
+    log: logBetter.bind(undefined, 'log'),
+    info: logBetter.bind(undefined, 'info'),
+    warn: logBetter.bind(undefined, 'warn'),
+    error: logBetter.bind(undefined, 'error'),
   };
 }
-
-
 
 /** Convert a Javascript date to yyy/mm/dd hh:mm:ss.ms
  *
