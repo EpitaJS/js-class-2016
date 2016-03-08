@@ -10,6 +10,7 @@
  */
 export function tokenize(str) {
   // Write code here so that it passes the tests
+  return str.split(' ').filter(function (elt) { return elt !== ''; })
 }
 
 /** stem a string = turn several variants into the same
@@ -20,6 +21,7 @@ export function tokenize(str) {
  */
 export function stem(str) {
   // Write code here so that it passes the tests
+  return str.toLowerCase();
 }
 
 /** parse a string into a list of stemmed token
@@ -30,6 +32,8 @@ export function stem(str) {
  */
 export function parse(str) {
   // Write code here so that it passes the tests
+  var tokens = tokenize(str);
+  return tokens.map(function (element) { return stem(element); });
 }
 
 /** index a string into a hash {'token' : <frequency of appearance>}
@@ -39,6 +43,15 @@ export function parse(str) {
  */
 export function index(str) {
   // Write code here so that it passes the tests
+  var obj = {};
+  var tokens = parse(str);
+  tokens.forEach(function (element) {
+    if (!obj.hasOwnProperty(element))
+      obj[element] = 1;
+    else
+      obj[element]++
+  });
+  return obj;
 }
 
 
