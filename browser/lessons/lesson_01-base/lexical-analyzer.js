@@ -9,7 +9,8 @@
  * @return {Array}
  */
 export function tokenize(str) {
-  // Write code here so that it passes the tests
+  var tab = str.trim().split(" ");
+  return tab.filter(function(v){ return v != '' })
 }
 
 /** stem a string = turn several variants into the same
@@ -19,7 +20,7 @@ export function tokenize(str) {
  * @return {String}
  */
 export function stem(str) {
-  // Write code here so that it passes the tests
+  return str.toLowerCase();
 }
 
 /** parse a string into a list of stemmed token
@@ -29,7 +30,7 @@ export function stem(str) {
  * @return {Array}
  */
 export function parse(str) {
-  // Write code here so that it passes the tests
+  return tokenize(stem(str));
 }
 
 /** index a string into a hash {'token' : <frequency of appearance>}
@@ -38,7 +39,15 @@ export function parse(str) {
  * @return {Object}
  */
 export function index(str) {
-  // Write code here so that it passes the tests
+	var freq = {}
+	var data = parse(str)
+  	for(var i = 0; i < data.length; ++i) {
+    	if(!freq[data[i]])
+        	freq[data[i]] = 0;
+    	++freq[data[i]];
+	}
+	console.log(freq);
+	return freq;
 }
 
 
