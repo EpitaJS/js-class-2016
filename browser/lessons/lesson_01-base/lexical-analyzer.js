@@ -1,6 +1,7 @@
 /** A simple lexical analyzer
  */
 
+ 
 /** tokenize a string = split it into words
  *
  * Note : space separated only for now
@@ -10,6 +11,8 @@
  */
 export function tokenize(str) {
   // Write code here so that it passes the tests
+  var allTokens = str.split(" ");
+  return allTokens.filter(item => item.length != 0);
 }
 
 /** stem a string = turn several variants into the same
@@ -20,6 +23,7 @@ export function tokenize(str) {
  */
 export function stem(str) {
   // Write code here so that it passes the tests
+  return str.toLowerCase(str);
 }
 
 /** parse a string into a list of stemmed token
@@ -30,6 +34,7 @@ export function stem(str) {
  */
 export function parse(str) {
   // Write code here so that it passes the tests
+  return tokenize(stem(str));
 }
 
 /** index a string into a hash {'token' : <frequency of appearance>}
@@ -39,6 +44,15 @@ export function parse(str) {
  */
 export function index(str) {
   // Write code here so that it passes the tests
+  let rawList = parse(str);
+  let result = {};
+  rawList.forEach(function (item) {
+    if (result[item] == undefined)
+      result[item] = 1;
+    else
+      result[item] += 1;
+  });
+  return result;
 }
 
 
