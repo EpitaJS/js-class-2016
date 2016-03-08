@@ -5,6 +5,12 @@
  */
 export default function convertToBoolean(value) {
   // TODO write the function so it passes the tests below !
+  if (typeof value === "boolean")
+  	return value;
+  else
+  {
+  	return value === 'true';
+  }
 }
 
 
@@ -15,3 +21,4 @@ export default function convertToBoolean(value) {
   ===
 
  */
+  

@@ -8,15 +8,23 @@ function createFancyLogger(id) {
 
     // TODO implement !
     let newArgs = originalArgs;
+    switch (level)
+    {
+      case 1: console.log(getTimestamp() + ' - ' + id + ' - ' + 'log'); break;
+      case 2: console.info(getTimestamp() + ' - ' + id + ' - ' + 'info'); break;
+      case 3: console.warn(getTimestamp() + ' - ' + id + ' - ' + 'warning !'); break;
+      case 4: console.error(getTimestamp() + ' - ' + id + ' - ' + 'error !'); break;
+    }
+    return ;
     // TODO....
   }
 
   /* eslint-disable no-undefined */
   return {
-    log: undefined,
-    info: undefined,
-    warn: undefined,
-    error: undefined,
+    log: logBetter.bind(undefined, 1),
+    info: logBetter.bind(undefined, 2),
+    warn: logBetter.bind(undefined, 3),
+    error: logBetter.bind(undefined, 4),
   };
 }
 
