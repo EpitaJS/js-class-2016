@@ -6,17 +6,26 @@ function createFancyLogger(id) {
   function logBetter(level) {
     const originalArgs = Array.from(arguments);
 
+    let res = [getTimestamp(), id];
+
+    if (id === 'DEFAULT')
+      id = id.toLowerCase();
     // TODO implement !
-    let newArgs = originalArgs;
-    // TODO....
+    originalArgs.shift();
+    console[level] (res.concat(originalArgs).join(' - '));
   }
+
+  let log = logBetter.bind(null, 'log');
+  let info = logBetter.bind(null, 'info');
+  let warn = logBetter.bind(null, 'warn');
+  let error = logBetter.bind(null, 'error');
 
   /* eslint-disable no-undefined */
   return {
-    log: undefined,
-    info: undefined,
-    warn: undefined,
-    error: undefined,
+    log: log,
+    info: info,
+    warn: warn,
+    error: error
   };
 }
 
