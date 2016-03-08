@@ -8,9 +8,19 @@
  * @argument {String}
  * @return {Array}
  */
-export function tokenize(str) {
-  // Write code here so that it passes the tests
-}
+ export function tokenize(str) {
+     // Write code here so that it passes the tests
+     var tab = str.split(" ");
+     var i = 0;
+     while (i < tab.length) {
+         if (tab[i] == "") {
+             tab.splice(i, 1);
+         } else {
+             i += 1;
+         }
+     }
+     return tab;
+ }
 
 /** stem a string = turn several variants into the same
  *
