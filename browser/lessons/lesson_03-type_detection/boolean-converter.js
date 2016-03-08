@@ -4,7 +4,15 @@
  * @return {Boolean}
  */
 export default function convertToBoolean(value) {
-  // TODO write the function so it passes the tests below !
+  if (typeof value === 'undefined')
+	return false;
+  if (value === null)
+	return false;
+  if (typeof value === 'string')
+	return value === "true";
+  if (typeof value === 'number')
+	return value === 0;
+  return value;
 }
 
 
