@@ -61,16 +61,16 @@ context('[Lesson 4]', function () {
       const logger = FancyLogger;
 
       logger.log('log');
-      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - default - log');
+      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - DEFAULT - log');
 
       logger.info('info');
-      expect(console.info).to.have.been.calledWith('1970/01/01 00:01:00.000 - default - info');
+      expect(console.info).to.have.been.calledWith('1970/01/01 00:01:00.000 - DEFAULT - info');
 
       logger.warn('warning !');
-      expect(console.warn).to.have.been.calledWith('1970/01/01 00:01:00.000 - default - warning !');
+      expect(console.warn).to.have.been.calledWith('1970/01/01 00:01:00.000 - DEFAULT - warning !');
 
       logger.error('error !');
-      expect(console.error).to.have.been.calledWith('1970/01/01 00:01:00.000 - default - error !');
+      expect(console.error).to.have.been.calledWith('1970/01/01 00:01:00.000 - DEFAULT - error !');
     });
 
     it('should handle both log invocation form', function () {
