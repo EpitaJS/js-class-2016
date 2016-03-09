@@ -4,7 +4,7 @@
  * @return {Boolean}
  */
 export default function convertToBoolean(value) {
-  // TODO write the function so it passes the tests below !
+	return value === true || value === 'true';
 }
 
 
