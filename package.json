@@ -1,11 +1,11 @@
 {
-  "name": "js-class-2016-proto",
+  "name": "js-class-2016",
   "version": "0.0.1",
   "description": "Javascript class for Epita 2016",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EpitaJS/js-class-2016-proto.git"
+    "url": "git+https://github.com/EpitaJS/js-class-2016.git"
   },
   "keywords": [
     "class"
@@ -13,9 +13,9 @@
   "author": "Offirmo <offirmo.net@gmail.com>",
   "license": "Unlicense",
   "bugs": {
-    "url": "https://github.com/EpitaJS/js-class-2016-proto/issues"
+    "url": "https://github.com/EpitaJS/js-class-2016/issues"
   },
-  "homepage": "https://github.com/EpitaJS/js-class-2016-proto#readme",
+  "homepage": "https://github.com/EpitaJS/js-class-2016#readme",
   "engines": {
     "node": "^4.3.2"
   },

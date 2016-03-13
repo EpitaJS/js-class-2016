@@ -44,33 +44,33 @@ context('[Lesson 4]', function () {
     it('should add the date and the radix', function () {
       const logger = FancyLogger.create('TEST');
 
-      logger.log('log');
-      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - log');
+      logger.log('hello log !');
+      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - hello log !');
 
-      logger.info('info');
-      expect(console.info).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - info');
+      logger.info('hello info !');
+      expect(console.info).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - hello info !');
 
-      logger.warn('warning !');
-      expect(console.warn).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - warning !');
+      logger.warn('hello warning !');
+      expect(console.warn).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - hello warning !');
 
-      logger.error('error !');
-      expect(console.error).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - error !');
+      logger.error('hello error !');
+      expect(console.error).to.have.been.calledWith('1970/01/01 00:01:00.000 - TEST - hello error !');
     });
 
     it('should expose a default logger with a default id', function () {
       const logger = FancyLogger;
 
-      logger.log('log');
-      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - default - log');
+      logger.log('hello log !');
+      expect(console.log).to.have.been.calledWith('1970/01/01 00:01:00.000 - DEFAULT - hello log !');
 
-      logger.info('info');
-      expect(console.info).to.have.been.calledWith('1970/01/01 00:01:00.000 - default - info');
+      logger.info('hello info !');
+      expect(console.info).to.have.been.calledWith('1970/01/01 00:01:00.000 - DEFAULT - hello info !');
 
-      logger.warn('warning !');
-      expect(console.warn).to.have.been.calledWith('1970/01/01 00:01:00.000 - default - warning !');
+      logger.warn('hello warning !');
+      expect(console.warn).to.have.been.calledWith('1970/01/01 00:01:00.000 - DEFAULT - hello warning !');
 
-      logger.error('error !');
-      expect(console.error).to.have.been.calledWith('1970/01/01 00:01:00.000 - default - error !');
+      logger.error('hello error !');
+      expect(console.error).to.have.been.calledWith('1970/01/01 00:01:00.000 - DEFAULT - hello error !');
     });
 
     it('should handle both log invocation form', function () {
