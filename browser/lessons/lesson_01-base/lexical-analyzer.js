@@ -9,7 +9,7 @@
  * @return {Array}
  */
 export function tokenize(str) {
-  // Write code here so that it passes the tests
+   return str.trim().split(/\s+/)
 }
 
 /** stem a string = turn several variants into the same
@@ -19,6 +19,7 @@ export function tokenize(str) {
  * @return {String}
  */
 export function stem(str) {
+    return str.toLowerCase()
   // Write code here so that it passes the tests
 }
 
@@ -30,6 +31,8 @@ export function stem(str) {
  */
 export function parse(str) {
   // Write code here so that it passes the tests
+  var low = stem(str);
+  return tokenize(low)
 }
 
 /** index a string into a hash {'token' : <frequency of appearance>}
