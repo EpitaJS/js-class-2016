@@ -9,14 +9,19 @@ function createFancyLogger(id) {
     // TODO implement !
     let newArgs = originalArgs;
     // TODO....
+	let str = getTimestamp() + " - " + id + " - " + originalArgs[0];
+	
+	return () => {
+		console[level](str);
+	};
   }
 
   /* eslint-disable no-undefined */
   return {
-    log: undefined,
-    info: undefined,
-    warn: undefined,
-    error: undefined,
+    log: logBetter('log'),
+    info: logBetter('info'),
+    warn: logBetter('warn'),
+    error: logBetter('error'),
   };
 }
 

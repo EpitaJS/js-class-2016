@@ -21,7 +21,7 @@ context('[Lesson 2]', function () {
       if (window.__karma__) return;
       //////////// **Instructions** ////////////
       // you may NOT modify this test, EXCEPT uncommenting the line below :
-      //debugger; //< you may uncomment this line
+      debugger; //< you may uncomment this line
 
       let isMasteringStateModification = '' +
         (window.localStorage.getItem(LS_KEY__MASTERING_STATE_MODIFICATION) || 'Obviously not.');
