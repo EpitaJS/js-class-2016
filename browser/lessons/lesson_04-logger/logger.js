@@ -9,14 +9,15 @@ function createFancyLogger(id) {
     // TODO implement !
     let newArgs = originalArgs;
     // TODO....
+	console[level].apply(console, newArgs);
   }
 
   /* eslint-disable no-undefined */
   return {
-    log: undefined,
-    info: undefined,
-    warn: undefined,
-    error: undefined,
+    log: logBetter,
+    info: logBetter,
+    warn: logBetter,
+    error: logBetter,
   };
 }
 
