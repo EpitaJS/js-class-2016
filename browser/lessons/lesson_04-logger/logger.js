@@ -5,18 +5,28 @@ function createFancyLogger(id) {
 
   function logBetter(level) {
     const originalArgs = Array.from(arguments);
-
     // TODO implement !
     let newArgs = originalArgs;
-    // TODO....
+    newArgs.pop();
+    newArgs.pop();
+    if (level === 'warn' || level === 'error')
+    {
+      newArgs.push('!');
+    }
+    newArgs.push(level);
+    newArgs.push('- TEST -');
+    newArgs.push(getTimestamp());
+    if (level === 'warn')
+      console[level].apply(console, newArgs.reverse())
+    return newArgs
   }
 
   /* eslint-disable no-undefined */
   return {
-    log: undefined,
-    info: undefined,
-    warn: undefined,
-    error: undefined,
+    log: logBetter.bind(undefined, 'log'),
+    info: logBetter.bind(undefined, 'info'),
+    warn: logBetter.bind(undefined, 'warn'),
+    error: logBetter.bind(undefined, 'error'),
   };
 }
 
