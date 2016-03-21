@@ -46,7 +46,6 @@ export function index(str) {
         	freq[data[i]] = 0;
     	++freq[data[i]];
 	}
-	console.log(freq);
 	return freq;
 }
 

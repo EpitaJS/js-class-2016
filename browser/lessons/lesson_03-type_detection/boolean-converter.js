@@ -4,7 +4,9 @@
  * @return {Boolean}
  */
 export default function convertToBoolean(value) {
-  // TODO write the function so it passes the tests below !
+	if (typeof(value) === "string")
+		return value === "true";
+	return Boolean(value);
 }
 
 
