@@ -9,6 +9,7 @@
  * @return {Array}
  */
 export function tokenize(str) {
+    return str.replace(/\s+/g,' ').trim().split(' ');
   // Write code here so that it passes the tests
 }
 
@@ -19,6 +20,7 @@ export function tokenize(str) {
  * @return {String}
  */
 export function stem(str) {
+    return str.toLowerCase();
   // Write code here so that it passes the tests
 }
 
@@ -29,6 +31,7 @@ export function stem(str) {
  * @return {Array}
  */
 export function parse(str) {
+    return tokenize(stem(str));
   // Write code here so that it passes the tests
 }
 
@@ -38,6 +41,17 @@ export function parse(str) {
  * @return {Object}
  */
 export function index(str) {
+    var obj = {};
+    var words = parse(str);
+    var res = words.map(val => {
+        if (obj[val]){
+            ++obj[val];
+        } else{
+            obj[val] = 1;
+        }
+    });
+    console.log(obj);
+    return obj;
   // Write code here so that it passes the tests
 }
 
