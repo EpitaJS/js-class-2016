@@ -21,7 +21,7 @@ context('[Lesson 2]', function () {
       if (window.__karma__) return;
       //////////// **Instructions** ////////////
       // you may NOT modify this test, EXCEPT uncommenting the line below :
-      //debugger; //< you may uncomment this line
+    // debugger; //< you may uncomment this line
 
       let isMasteringStateModification = '' +
         (window.localStorage.getItem(LS_KEY__MASTERING_STATE_MODIFICATION) || 'Obviously not.');
@@ -89,7 +89,7 @@ context('[Lesson 2]', function () {
       // what ????
       // TODO understand
 
-      let copy = ( object ); // TODO change this line to use the cloneDeep() function
+      let copy = _.cloneDeep(object); // TODO change this line to use the cloneDeep() function
       object.foo.bar = 33;
 
       expect(object).to.have.deep.property('foo.bar', 33);

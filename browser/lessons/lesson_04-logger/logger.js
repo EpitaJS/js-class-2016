@@ -6,17 +6,40 @@ function createFancyLogger(id) {
   function logBetter(level) {
     const originalArgs = Array.from(arguments);
 
-    // TODO implement !
     let newArgs = originalArgs;
-    // TODO....
+    if(id == 'DEFAULT')
+        id = 'default';
+
+    if(newArgs.length == 4)
+    {
+         if(newArgs[0]=="log")
+            console.log(getTimestamp()+' - '+id+" - "+newArgs[1], newArgs[2], newArgs[3]);
+    }
+    else
+    {
+      if(_.isObject(newArgs[1]))
+      {
+         if(newArgs[0]=="log")
+        console.log(getTimestamp()+' - '+id+" - ",newArgs[1]);
+      }
+      if(newArgs[0]=="log")
+      console.log(getTimestamp()+' - '+id+" - "+newArgs[1]);
+      if(newArgs[0]=="info")
+      console.info(getTimestamp()+' - '+id+" - "+newArgs[1]);
+      if(newArgs[0]=="warn")
+        console.warn(getTimestamp()+' - '+id+" - "+newArgs[1]);
+      if(newArgs[0]=="error")
+        console.error(getTimestamp()+' - '+id+" - "+newArgs[1]);
+    }
   }
+
 
   /* eslint-disable no-undefined */
   return {
-    log: undefined,
-    info: undefined,
-    warn: undefined,
-    error: undefined,
+    log: logBetter.bind(undefined,"log"),
+    info: logBetter.bind(undefined, "info"),
+    warn: logBetter.bind(undefined, "warn"),
+    error: logBetter.bind(undefined, "error"),
   };
 }
 
@@ -27,6 +50,8 @@ function createFancyLogger(id) {
  * @param {Date} d
  */
 function getTimestamp(d) {
+
+
   /* eslint complexity: [2,9] */
   d = d || (new Date());
 
