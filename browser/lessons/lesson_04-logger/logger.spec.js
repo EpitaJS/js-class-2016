@@ -27,7 +27,6 @@ context('[Lesson 4]', function () {
 
     it('should forward to proper functions', function () {
       const logger = FancyLogger;
-
       logger.log('hello');
       expect(console.log).to.have.been.calledOnce;
 
