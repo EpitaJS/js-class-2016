@@ -1,8 +1,18 @@
 
 export default function debounce(callback, waitMs) {
-
-  return function() {
-    // ...
+  var timeoutHandle;
+  
+  return function(arg1, arg2) 
+  {
+    clearTimeout(timeoutHandle);
+    timeoutHandle = setTimeout(function()
+    {
+       if(arg2 == null)
+         callback(arg1);
+       else
+         callback(arg1, arg2);
+    },
+    waitMs);
   };
 }
 
