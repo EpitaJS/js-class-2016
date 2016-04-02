@@ -3,12 +3,39 @@ import _ from 'lodash';
 function createFancyLogger(id) {
   id = (id || 'default').toUpperCase();
 
-  function logBetter(level) {
+   function logBetter(level) {
     const originalArgs = Array.from(arguments);
 
-    // TODO implement !
-    let newArgs = originalArgs;
-    // TODO....
+    let updArgs = originalArgs;
+    
+    if(id === 'DEFAULT')
+        id = 'default';
+
+    if(updArgs.length === 4)
+    {
+         if(updArgs[0] === "log")
+            console.log(getTimestamp() + ' - ' + id + " - " + updArgs[1], updArgs[2], updArgs[3]);
+    }
+    else
+    {
+      if(_.isObject(updArgs[1]))
+      {
+         if(updArgs[0] === "log")
+           console.log(getTimestamp() + ' - ' + id + " - ", updArgs[1]);
+      }
+      
+      if(updArgs[0] === "log")
+        console.log(getTimestamp() + ' - ' + id + " - " + updArgs[1]);
+        
+      if(updArgs[0] === "info")
+        console.info(getTimestamp() + ' - ' + id + " - " + updArgs[1]);
+        
+      if(updArgs[0] === "warn")
+        console.warn(getTimestamp() + ' - ' + id + " - " + updArgs[1]);
+        
+      if(updArgs[0] === "error")
+        console.error(getTimestamp() + ' - ' + id + " - " + updArgs[1]);
+    }
   }
 
   /* eslint-disable no-undefined */
