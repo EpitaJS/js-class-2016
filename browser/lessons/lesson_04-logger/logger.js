@@ -26,6 +26,10 @@ function createFancyLogger(id) {
     info: logBetter.bind(undefined, 'info'),
     warn: logBetter.bind(undefined, 'warn'),
     error: logBetter.bind(undefined, 'error'),
+    log: logBetter.bind(undefined, 'log'),
+    info: logBetter.bind(undefined, 'info'),
+    warn: logBetter.bind(undefined, 'warn'),
+    error: logBetter.bind(undefined, 'error'),
   };
 }
 
@@ -68,3 +72,4 @@ defaultLogger.create = createFancyLogger;
 
 export default defaultLogger;
 export { createFancyLogger as create };
+
