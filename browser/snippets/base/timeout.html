@@ -23,10 +23,9 @@
   'use strict';
 
   console.log('line 1');
-  setTimeout(
+  setTimeout(function() {
     console.log.bind(console, 'line 2'),
-    1000
-  );
+  }, 1000);
   console.log('line 3');
 
 
