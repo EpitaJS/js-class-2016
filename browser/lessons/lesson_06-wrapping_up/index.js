@@ -27,7 +27,16 @@ function updateResults() {
 
   let index = LexicalAnalyser.index(text);
 
-  let elements;
+  let elements = Object.keys(index).sort(function(a, b){
+    return index[a] < index[b];
+
+  });
+
+  elements = elements.map(function(current)
+  {
+    return '<tr><td>' + current + '</td><td>' + index[current] + '</td></tr>';
+  });
+
   /* TODO
    elements = [
      '<tr><td>Hello</td><td>2</td></tr>',

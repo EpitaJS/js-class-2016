@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 function createFancyLogger(id) {
-  id = (id || 'default');
+  id = (id || 'DEFAULT');
 
   function logBetter(level) {
     // TODO implement !
